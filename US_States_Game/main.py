@@ -15,16 +15,18 @@ def get_mouse_click_coor(x, y):
 
 
 def read_states_csv():
-    data = pandas.read_csv("50_states.csv")
-    return data
+    states_data = pandas.read_csv("50_states.csv")
+    return states_data
 
 
 def count_missing_states():
-    missing_states = []
-    for state in panda_states:
-        if state not in guessed_states:
-            missing_states.append(state)
-    return missing_states
+    # replaced with list comprehension
+    local_missing_states = [state
+                            for state in panda_states if state not in guessed_states]
+    # for state in panda_states:
+    #     if state not in guessed_states:
+    #         local_missing_states.append(state)
+    return local_missing_states
 
 
 # game logic
